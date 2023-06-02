@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:34:13 by elias             #+#    #+#             */
-/*   Updated: 2023/06/02 13:05:53 by elias            ###   ########.fr       */
+/*   Updated: 2023/06/02 13:30:34 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class Bureaucrat
 
 	public:
 		// Constructors
-		Bureaucrat();
+		Bureaucrat(std::string const &name, int grade);
 		Bureaucrat(Bureaucrat const &copy);
 		~Bureaucrat();
 
@@ -33,10 +33,21 @@ class Bureaucrat
 		Bureaucrat const	&operator=(Bureaucrat const &copy);
 
 		// Methods
+		void	incrementGrade(void);
+		void	incrementGrade(int value);
+		void	decrementGrade(void);
+		void	decrementGrade(int value);
 
 		// Getters and Setters 
 		std::string	const	&getName(void) const;
 		int	getGrade(void) const;
+
+
+
+
+
+
+		
 };
 
 #endif

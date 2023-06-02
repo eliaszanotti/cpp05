@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:34:13 by elias             #+#    #+#             */
-/*   Updated: 2023/06/02 13:06:46 by elias            ###   ########.fr       */
+/*   Updated: 2023/06/02 14:00:21 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,16 @@ void Bureaucrat::print(std::string const &str, int color) const
 }
 
 // Constructors
-Bureaucrat::Bureaucrat()
+Bureaucrat::Bureaucrat(std::string const &name, int grade): _name(name)
 {
+	// this->_name = name;
+	this->_grade = grade;
 	this->print("created", 2);
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat const &copy)
+Bureaucrat::Bureaucrat(Bureaucrat const &copy): _name(copy._name)
 {
+	*this = copy;
 	this->print("created by copy", 2);
 }
 
@@ -51,10 +54,40 @@ Bureaucrat::~Bureaucrat()
 // Operators
 Bureaucrat const	&Bureaucrat::operator=(Bureaucrat const &copy)
 {
+	// this->_name = copy.getName();
+	this->_grade = copy.getGrade();
 	this->print("created by assignment", 2);
+	return (*this);
 }
 
 // Methods
+void Bureaucrat::incrementGrade(void)
+{
+	this->_grade--;
+	this->print("", 3);
+	std::cout << "new grade : " << this->_grade << std::endl;
+}
+
+void Bureaucrat::incrementGrade(int value)
+{
+	this->_grade -= value;
+	this->print("", 3);
+	std::cout << "new grade : " << this->_grade << std::endl;
+}
+
+void Bureaucrat::decrementGrade(void)
+{
+	this->_grade++;
+	this->print("", 3);
+	std::cout << "new grade : " << this->_grade << std::endl;
+}
+
+void Bureaucrat::decrementGrade(int value)
+{
+	this->_grade += value;
+	this->print("", 3);
+	std::cout << "new grade : " << this->_grade << std::endl;
+}
 
 // Getters and Setters
 std::string const &Bureaucrat::getName(void) const

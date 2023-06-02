@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:34:13 by elias             #+#    #+#             */
-/*   Updated: 2023/06/02 14:11:05 by elias            ###   ########.fr       */
+/*   Updated: 2023/06/02 14:44:03 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,7 @@ class Bureaucrat
 				virtual char const	*what(void) const throw();
 		};
 };
+
+std::ostream	&operator<<(std::ostream &stream, Bureaucrat const &bureaucrat);
 
 #endif

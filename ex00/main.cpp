@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 13:01:52 by elias             #+#    #+#             */
-/*   Updated: 2023/06/02 14:25:00 by elias            ###   ########.fr       */
+/*   Updated: 2023/06/02 14:51:50 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ int main(void)
         try
         {
             Bureaucrat  cadre("cadre", 10);
+            std::cout << cadre << std::endl;
             cadre.incrementGrade();
+            std::cout << cadre << std::endl;
             cadre.decrementGrade(10);
             cadre.decrementGrade();
             cadre.incrementGrade(20);
@@ -32,7 +34,7 @@ int main(void)
             std::cout << error.what() << std::endl;
         }
     }
-    std::cout << "--- Test with too low grade ---" << std::endl;
+    std::cout << "\n--- Test with too low grade ---" << std::endl;
     {
         try
         {
@@ -49,12 +51,12 @@ int main(void)
             std::cout << error.what() << std::endl;
         }
     }
-    std::cout << "--- Test with wrong value ---" << std::endl;
+    std::cout << "\n--- Test with wrong value ---" << std::endl;
     {
         try
         {
             Bureaucrat  cadre("cadre", 160);
-            cadre.incrementGrade()        };
+            cadre.incrementGrade();
         }
         catch (std::exception &error)
         {

@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:34:13 by elias             #+#    #+#             */
-/*   Updated: 2023/06/02 15:53:23 by elias            ###   ########.fr       */
+/*   Updated: 2023/06/02 15:54:38 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,4 +106,15 @@ int const	&Form::getSigningGrade(void) const
 int const	&Form::getExecuteGrade(void) const
 {
     return (this->_executeGrade);
+}
+
+// Exceptions
+char const *Form::GradeTooHighException::what(void) const throw()
+{
+    return ("\e[31m[ERROR]\e[0m Grade too high!");
+}
+
+char const *Form::GradeTooLowException::what(void) const throw()
+{
+    return ("\e[31m[ERROR]\e[0m Grade too low!");
 }

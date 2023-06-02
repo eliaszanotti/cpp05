@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:34:13 by elias             #+#    #+#             */
-/*   Updated: 2023/06/02 15:13:46 by elias            ###   ########.fr       */
+/*   Updated: 2023/06/02 15:51:10 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Form
 	private:
 		std::string	const	_name;
 		bool	_isSigned;
-		int const	_signingGrade;			
+		int const	_signingGrade;
 		int const	_executeGrade;
 		// Print
 		void	print(std::string const &str, int color) const;
@@ -29,6 +29,7 @@ class Form
 	public:
 		// Constructors
 		Form();
+		Form(std::string const &name, int const signingGrade, int const executeGrade);
 		Form(Form const &copy);
 		~Form();
 
@@ -36,14 +37,25 @@ class Form
 		Form const	&operator=(Form const &copy);
 
 		// Methods
-		void	beSigned(Bureaucrat const &bureaucrat) const;
+		void	beSigned(Bureaucrat const &bureaucrat);
 		
 		// Getters and Setters
-		std::string	&getName(void) const;
-		bool const	&getIsSigned(void) const;
+		std::string	const	&getName(void) const;
+		bool	getIsSigned(void) const;
 		int const	&getSigningGrade(void) const;
 		int const	&getExecuteGrade(void) const;
 
+		// Exceptions
+		class GradeTooHighException: public std::exception
+		{
+			public:
+				virtual char const	*what(void) const throw();
+		};
+		class GradeTooLowException: public std::exception
+		{
+			public:
+				virtual char const	*what(void) const throw();
+		};
 };
 
 #endif

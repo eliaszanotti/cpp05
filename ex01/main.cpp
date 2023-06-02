@@ -6,12 +6,13 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 13:01:52 by elias             #+#    #+#             */
-/*   Updated: 2023/06/02 14:51:50 by elias            ###   ########.fr       */
+/*   Updated: 2023/06/02 15:52:25 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Bureaucrat.class.hpp"
+#include "Form.class.hpp"
 
 int main(void)
 {

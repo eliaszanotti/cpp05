@@ -6,13 +6,14 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:34:13 by elias             #+#    #+#             */
-/*   Updated: 2023/06/02 15:13:22 by elias            ###   ########.fr       */
+/*   Updated: 2023/06/02 15:53:23 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <sstream>
 #include "Form.class.hpp"
+#include "Bureaucrat.class.hpp"
 
 // Print
 void Form::print(std::string const &str, int color) const
@@ -33,15 +34,31 @@ void Form::print(std::string const &str, int color) const
 }
 
 // Constructors
-Form::Form()
+Form::Form():
+	_name("<default name>"),
+	_isSigned(false),
+	_signingGrade(50),
+	_executeGrade(100)
 {
 	this->print("created", 2);
 }
 
-Form::Form(Form const &copy)
+Form::Form(std::string const &name, int const signingGrade, int const executeGrade):
+	_name(name),
+	_isSigned(false),
+	_signingGrade(signingGrade),
+	_executeGrade(executeGrade)
 {
-	*this = copy;
-	this->print("created by copy", 2);
+	this->print("created", 2);
+}
+
+Form::Form(Form const &copy):
+	_name(copy.getName()),
+	_isSigned(copy.getIsSigned()),
+	_signingGrade(copy.getSigningGrade()),
+	_executeGrade(copy.getExecuteGrade())
+{
+	this->print("created", 2);
 }
 
 Form::~Form()
@@ -52,17 +69,21 @@ Form::~Form()
 // Operators
 Form const	&Form::operator=(Form const &copy)
 {
-	this->_name = copy.getName();
-	this->_isSigned = copy.getExecuteGrade();
-	this->_signingGrade = copy.getSigningGrade();
-	this->_executeGrade = copy.getExecuteGrade();
+	this->_isSigned = copy.getIsSigned();
 	this->print("created by assignment", 2);
 	return (*this);
 }
 
 // Methods
-void Form::beSigned(Bureaucrat const &bureaucrat) const
+void Form::beSigned(Bureaucrat const &bureaucrat)
 {
+	if (bureaucrat.getGrade() > this->_signingGrade)
+		throw (Form::GradeTooLowException());
+	else
+	{
+		this->_isSigned = true;
+		this->print("form signed !", 3);
+	}
 	
 }
 
@@ -72,7 +93,7 @@ std::string const	&Form::getName(void) const
     return (this->_name);
 }
 
-bool const	&Form::getIsSigned(void) const
+bool	Form::getIsSigned(void) const
 {
     return (this->_isSigned);
 }

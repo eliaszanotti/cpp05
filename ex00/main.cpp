@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 13:01:52 by elias             #+#    #+#             */
-/*   Updated: 2023/06/02 13:55:59 by elias            ###   ########.fr       */
+/*   Updated: 2023/06/02 14:01:20 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,11 @@ int main(void)
     cadre.incrementGrade();
     cadre.incrementGrade();
     cadre.incrementGrade();
-    cadre.incrementGrade(10);
+    cadre.incrementGrade();
+    cadre.decrementGrade(10);
+    cadre.decrementGrade();
+    cadre.decrementGrade();
+    cadre.incrementGrade();
 
 
 

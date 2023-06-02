@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:34:13 by elias             #+#    #+#             */
-/*   Updated: 2023/06/02 14:06:28 by elias            ###   ########.fr       */
+/*   Updated: 2023/06/02 14:20:56 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,11 @@ void Bureaucrat::print(std::string const &str, int color) const
 // Constructors
 Bureaucrat::Bureaucrat(std::string const &name, int grade): _name(name)
 {
-	// this->_name = name;
 	this->_grade = grade;
+	if (this->_grade > 150)
+		throw (Bureaucrat::GradeTooLowException());
+	if (this->_grade < 1)
+		throw (Bureaucrat::GradeTooHighException());
 	this->print("created", 2);
 }
 
@@ -54,7 +57,6 @@ Bureaucrat::~Bureaucrat()
 // Operators
 Bureaucrat const	&Bureaucrat::operator=(Bureaucrat const &copy)
 {
-	// this->_name = copy.getName();
 	this->_grade = copy.getGrade();
 	this->print("created by assignment", 2);
 	return (*this);
@@ -64,6 +66,8 @@ Bureaucrat const	&Bureaucrat::operator=(Bureaucrat const &copy)
 void Bureaucrat::incrementGrade(void)
 {
 	this->_grade--;
+	if (this->_grade < 1)
+		throw (Bureaucrat::GradeTooHighException());
 	this->print("", 3);
 	std::cout << "[+1] new grade : " << this->_grade << std::endl;
 }
@@ -71,6 +75,8 @@ void Bureaucrat::incrementGrade(void)
 void Bureaucrat::incrementGrade(int value)
 {
 	this->_grade -= value;
+	if (this->_grade < 1)
+		throw (Bureaucrat::GradeTooHighException());
 	this->print("", 3);
 	std::cout << "[+" << value << "] new grade : " << this->_grade << std::endl;
 }
@@ -78,6 +84,8 @@ void Bureaucrat::incrementGrade(int value)
 void Bureaucrat::decrementGrade(void)
 {
 	this->_grade++;
+	if (this->_grade > 150)
+		throw (Bureaucrat::GradeTooLowException());;
 	this->print("", 3);
 	std::cout << "[-1] new grade : " << this->_grade << std::endl;
 }
@@ -85,6 +93,8 @@ void Bureaucrat::decrementGrade(void)
 void Bureaucrat::decrementGrade(int value)
 {
 	this->_grade += value;
+	if (this->_grade > 150)
+		throw (Bureaucrat::GradeTooLowException());;
 	this->print("", 3);
 	std::cout << "[-" << value << "] new grade : " << this->_grade << std::endl;
 }
@@ -98,4 +108,15 @@ std::string const &Bureaucrat::getName(void) const
 int Bureaucrat::getGrade(void) const
 {
 	return (this->_grade);
+}
+
+// Exceptions
+char const *Bureaucrat::GradeTooHighException::what(void) const throw()
+{
+    return ("\e[31m[ERROR]\e[0m Grade too high!");
+}
+
+char const *Bureaucrat::GradeTooLowException::what(void) const throw()
+{
+    return ("\e[31m[ERROR]\e[0m Grade too low!");
 }

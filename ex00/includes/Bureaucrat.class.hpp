@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:34:13 by elias             #+#    #+#             */
-/*   Updated: 2023/06/02 13:30:34 by elias            ###   ########.fr       */
+/*   Updated: 2023/06/02 14:11:05 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,17 @@ class Bureaucrat
 		std::string	const	&getName(void) const;
 		int	getGrade(void) const;
 
-
-
-
-
-
-		
+		// Exceptions
+		class GradeTooHighException: public std::exception
+		{
+			public:
+				virtual char const	*what(void) const throw();
+		};
+		class GradeTooLowException: public std::exception
+		{
+			public:
+				virtual char const	*what(void) const throw();
+		};
 };
 
 #endif

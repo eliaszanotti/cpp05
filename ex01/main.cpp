@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 13:01:52 by elias             #+#    #+#             */
-/*   Updated: 2023/06/05 16:28:26 by elias            ###   ########.fr       */
+/*   Updated: 2023/06/05 17:22:03 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,11 @@ int main(void)
             std::cerr << error.what() << std::endl;
         }
     }
-    std::cout << "\n--- Test with wrong value ---" << std::endl;
+    std::cout << "\n--- Test with invalid grade (too high) ---" << std::endl;
     {
         try
         {
-            Bureaucrat  cadre("cadre", 160);
+            Bureaucrat  cadre("cadre", 0);
             cadre.incrementGrade();
         }
         catch (std::exception &error)
@@ -64,19 +64,7 @@ int main(void)
             std::cerr << error.what() << std::endl;
         }
     }    
-    std::cout << "\n--- Test with form ---" << std::endl;
-    {
-        try
-        {
-            Bureaucrat  cadre("cadre", 160);
-            cadre.incrementGrade();
-        }
-        catch (std::exception &error)
-        {
-            std::cerr << error.what() << std::endl;
-        }
-    }
-
+    std::cout << "\n--- Test form with invalid grade (too low) ---" << std::endl;
 	{
 		try
 		{
@@ -88,8 +76,39 @@ int main(void)
 			std::cerr << error.what() << std::endl;
 		}
 	}
-
-
-
+    std::cout << "\n--- Test with valid signed form ---" << std::endl;
+	{
+		try
+		{
+            Bureaucrat mike("Mike", 15);
+			const std::string name = "MAN";
+            Form form(name, 20, 45);
+			// Form form("MAN", 20, 45);
+			std::cout << mike << std::endl;
+			std::cout << form << std::endl;
+			mike.signForm(form);
+			std::cout << form << std::endl;
+		}
+		catch (std::exception &error)
+		{
+			std::cerr << error.what() << std::endl;
+		}
+	}
+    std::cout << "\n--- Test with invalid signed form ---" << std::endl;
+    {
+		try
+		{
+			Bureaucrat john("John", 35);
+			Form form("FORM", 20, 45);
+			std::cout << john << std::endl;
+			std::cout << form << std::endl;
+			john.signForm(form);
+			std::cout << form << std::endl;
+		}
+		catch (std::exception &error)
+		{
+			std::cerr << error.what() << std::endl;
+		}
+	}
     return (0);
 }

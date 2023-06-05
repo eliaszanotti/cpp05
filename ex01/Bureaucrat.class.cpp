@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:34:13 by elias             #+#    #+#             */
-/*   Updated: 2023/06/05 16:26:44 by elias            ###   ########.fr       */
+/*   Updated: 2023/06/05 17:24:13 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,21 @@ void Bureaucrat::decrementGrade(int value)
 		throw (Bureaucrat::GradeTooLowException());;
 	this->print("", 3);
 	std::cout << "[-" << value << "] new grade : " << this->_grade << std::endl;
+}
+		
+void Bureaucrat::signForm(Form &form)
+{
+	try
+	{
+		form.beSigned(*this);
+		this->print("", 3);
+		std::cout << "signs " << form.getName() << std::endl;
+	}
+	catch (std::exception &error)
+	{	
+		this->print("", 3);
+		std::cerr << "cannot sign " << form.getName() << " (" << error.what() << ")" << std::endl;
+	}
 }
 
 // Getters and Setters

@@ -6,14 +6,13 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:34:13 by elias             #+#    #+#             */
-/*   Updated: 2023/06/05 16:23:17 by elias            ###   ########.fr       */
+/*   Updated: 2023/06/05 17:15:22 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <sstream>
 #include "Form.class.hpp"
-#include "Bureaucrat.class.hpp"
 
 // Print
 void Form::print(std::string const &str, int color) const
@@ -131,8 +130,8 @@ std::ostream &operator<<(std::ostream &stream, Form const &form)
 	if (form.getIsSigned())
 	{
         stream << "\e[33m[Form " << form.getName() << "]\e[0m signed \e[32m:)\e[0m (signing grade=" << form.getSigningGrade();
-		return (stream << ") (execute grade=" << form.getExecuteGrade() << ")");
+		return (stream << ") (execute grade=" << form.getExecuteGrade() << ")" << std::flush);
 	}
 	stream << "\e[33m[Form " << form.getName() << "]\e[0m not signed \e[31m:(\e[0m (signing grade=" << form.getSigningGrade();
-	return (stream << ") (execute grade=" << form.getExecuteGrade() << ")");
+	return (stream << ") (execute grade=" << form.getExecuteGrade() << ")" << std::flush);
 }

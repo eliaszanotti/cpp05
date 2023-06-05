@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:34:13 by elias             #+#    #+#             */
-/*   Updated: 2023/06/05 16:12:39 by elias            ###   ########.fr       */
+/*   Updated: 2023/06/05 17:02:22 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define BUREAUCRAT_CLASS_H
 
 # include <iostream>
+# include "Form.class.hpp"
+
+class Form;
 
 class Bureaucrat
 {
@@ -37,6 +40,7 @@ class Bureaucrat
 		void	incrementGrade(int value);
 		void	decrementGrade(void);
 		void	decrementGrade(int value);
+		void	signForm(Form &form);
 
 		// Getters and Setters 
 		std::string	const	&getName(void) const;

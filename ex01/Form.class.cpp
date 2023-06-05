@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:34:13 by elias             #+#    #+#             */
-/*   Updated: 2023/06/02 15:54:38 by elias            ###   ########.fr       */
+/*   Updated: 2023/06/05 16:21:57 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,14 @@ Form::Form(std::string const &name, int const signingGrade, int const executeGra
 	_signingGrade(signingGrade),
 	_executeGrade(executeGrade)
 {
+	if (signingGrade > 150)
+		throw (Form::GradeTooLowException());
+	if (signingGrade < 1)
+		throw (Form::GradeTooHighException());
+	if (executeGrade > 150)
+		throw (Form::GradeTooLowException());
+	if (executeGrade < 1)
+		throw (Form::GradeTooHighException());
 	this->print("created", 2);
 }
 
@@ -84,7 +92,6 @@ void Form::beSigned(Bureaucrat const &bureaucrat)
 		this->_isSigned = true;
 		this->print("form signed !", 3);
 	}
-	
 }
 
 // Getters and Setters
@@ -117,4 +124,15 @@ char const *Form::GradeTooHighException::what(void) const throw()
 char const *Form::GradeTooLowException::what(void) const throw()
 {
     return ("\e[31m[ERROR]\e[0m Grade too low!");
+}
+
+std::ostream &operator<<(std::ostream &stream, Form const &form)
+{
+	if (form.getIsSigned())
+	{
+        stream << "\e[33m[Form " << form.getName() << "]\e[0m signed \e[32m:)\e[0m (signing grade=" << form.getSigningGrade();
+		return (stream << ") (execute grade=" << form.getExecuteGrade() << ")");
+	}
+	stream << "\e[33m[Form " << form.getName() << "]\e[0m not signed \e[31m:(\e[0m (signing grade=" << form.getSigningGrade();
+	return (stream << ") (execute grade=" << form.getExecuteGrade() << ")");
 }

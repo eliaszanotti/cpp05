@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:34:13 by elias             #+#    #+#             */
-/*   Updated: 2023/06/02 15:51:10 by elias            ###   ########.fr       */
+/*   Updated: 2023/06/05 16:12:59 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,7 @@ class Form
 				virtual char const	*what(void) const throw();
 		};
 };
+
+std::ostream	&operator<<(std::ostream &stream, Form const &form);
 
 #endif

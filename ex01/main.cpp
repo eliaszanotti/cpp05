@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 13:01:52 by elias             #+#    #+#             */
-/*   Updated: 2023/06/02 15:52:25 by elias            ###   ########.fr       */
+/*   Updated: 2023/06/05 16:22:36 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,33 @@ int main(void)
         {
             std::cout << error.what() << std::endl;
         }
+    }    
+    std::cout << "\n--- Test with form ---" << std::endl;
+    {
+        try
+        {
+            Bureaucrat  cadre("cadre", 160);
+            cadre.incrementGrade();
+        }
+        catch (std::exception &error)
+        {
+            std::cout << error.what() << std::endl;
+        }
     }
+
+	{
+		try
+		{
+			Form form("Form Impot", 150, 1);
+			std::cout << form << std::endl;
+		}
+		catch(std::exception &error)
+		{
+			std::cerr << error.what() << std::endl;
+		}
+	}
+
+
+
     return (0);
 }

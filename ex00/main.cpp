@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 13:01:52 by elias             #+#    #+#             */
-/*   Updated: 2023/06/02 14:51:50 by elias            ###   ########.fr       */
+/*   Updated: 2023/06/05 16:28:41 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int main(void)
         }
         catch (std::exception &error)
         {
-            std::cout << error.what() << std::endl;
+            std::cerr << error.what() << std::endl;
         }
     }
     std::cout << "\n--- Test with too low grade ---" << std::endl;
@@ -48,7 +48,7 @@ int main(void)
         }
         catch (std::exception &error)
         {
-            std::cout << error.what() << std::endl;
+            std::cerr << error.what() << std::endl;
         }
     }
     std::cout << "\n--- Test with wrong value ---" << std::endl;
@@ -60,7 +60,7 @@ int main(void)
         }
         catch (std::exception &error)
         {
-            std::cout << error.what() << std::endl;
+            std::cerr << error.what() << std::endl;
         }
     }
     return (0);

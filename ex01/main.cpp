@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 13:01:52 by elias             #+#    #+#             */
-/*   Updated: 2023/06/05 16:22:36 by elias            ###   ########.fr       */
+/*   Updated: 2023/06/05 16:28:26 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int main(void)
         }
         catch (std::exception &error)
         {
-            std::cout << error.what() << std::endl;
+            std::cerr << error.what() << std::endl;
         }
     }
     std::cout << "\n--- Test with too low grade ---" << std::endl;
@@ -49,7 +49,7 @@ int main(void)
         }
         catch (std::exception &error)
         {
-            std::cout << error.what() << std::endl;
+            std::cerr << error.what() << std::endl;
         }
     }
     std::cout << "\n--- Test with wrong value ---" << std::endl;
@@ -61,7 +61,7 @@ int main(void)
         }
         catch (std::exception &error)
         {
-            std::cout << error.what() << std::endl;
+            std::cerr << error.what() << std::endl;
         }
     }    
     std::cout << "\n--- Test with form ---" << std::endl;
@@ -73,14 +73,14 @@ int main(void)
         }
         catch (std::exception &error)
         {
-            std::cout << error.what() << std::endl;
+            std::cerr << error.what() << std::endl;
         }
     }
 
 	{
 		try
 		{
-			Form form("Form Impot", 150, 1);
+			Form form("Form Impot", 167, 30);
 			std::cout << form << std::endl;
 		}
 		catch(std::exception &error)

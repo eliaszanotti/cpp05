@@ -4,3 +4,4 @@
 *.o
 .objs
 !Makefile
+.vscode

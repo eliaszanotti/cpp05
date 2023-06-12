@@ -80,3 +80,14 @@ void RobotomyRequestForm::beExecuted(Bureaucrat const &bureaucrat) const
 	else
 		std::cout << bureaucrat.getName() << " failed to robotomize..." << std::endl;
 }
+
+std::ostream &operator<<(std::ostream &stream, RobotomyRequestForm const &form)
+{
+	if (form.getIsSigned())
+	{
+        stream << "\e[33m[Form " << form.getName() << "]\e[0m signed \e[32m:)\e[0m (signing grade=" << form.getSigningGrade();
+		return (stream << ") (execute grade=" << form.getExecuteGrade() << ")" << std::flush);
+	}
+	stream << "\e[33m[Form " << form.getName() << "]\e[0m not signed \e[31m:(\e[0m (signing grade=" << form.getSigningGrade();
+	return (stream << ") (execute grade=" << form.getExecuteGrade() << ")" << std::flush);
+}

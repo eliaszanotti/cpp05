@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
+/*   RobotomyRequestForm.class.hpp                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:34:13 by elias             #+#    #+#             */
-/*   Updated: 2023/06/12 13:56:20 by elias            ###   ########.fr       */
+/*   Updated: 2023/06/12 14:36:06 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,7 @@ class RobotomyRequestForm: public Form
 		// Methods
 		void	beExecuted(Bureaucrat const &bureaucrat) const;
 };
+
+std::ostream	&operator<<(std::ostream &stream, RobotomyRequestForm const &form);
 
 #endif

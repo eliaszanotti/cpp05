@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 14:17:55 by elias             #+#    #+#             */
-/*   Updated: 2023/06/12 14:24:00 by elias            ###   ########.fr       */
+/*   Updated: 2023/06/12 14:36:34 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,15 @@ void PresidentialPardonForm::beExecuted(Bureaucrat const &bureaucrat) const
 {
 	this->print("", 3);
 	std::cout << " has been pardoned by Zafod Beeblebrox thanks to " << bureaucrat.getName() << std::endl;
+}
+
+std::ostream &operator<<(std::ostream &stream, PresidentialPardonForm const &form)
+{
+	if (form.getIsSigned())
+	{
+        stream << "\e[33m[Form " << form.getName() << "]\e[0m signed \e[32m:)\e[0m (signing grade=" << form.getSigningGrade();
+		return (stream << ") (execute grade=" << form.getExecuteGrade() << ")" << std::flush);
+	}
+	stream << "\e[33m[Form " << form.getName() << "]\e[0m not signed \e[31m:(\e[0m (signing grade=" << form.getSigningGrade();
+	return (stream << ") (execute grade=" << form.getExecuteGrade() << ")" << std::flush);
 }

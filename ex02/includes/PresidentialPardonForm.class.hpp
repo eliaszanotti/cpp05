@@ -38,4 +38,6 @@ class PresidentialPardonForm: public Form
 		void	beExecuted(Bureaucrat const &bureaucrat) const;
 };
 
+std::ostream	&operator<<(std::ostream &stream, PresidentialPardonForm const &form);
+
 #endif

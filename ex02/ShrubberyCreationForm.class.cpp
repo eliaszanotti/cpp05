@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:34:13 by elias             #+#    #+#             */
-/*   Updated: 2023/06/12 14:27:38 by elias            ###   ########.fr       */
+/*   Updated: 2023/06/12 14:37:19 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,15 @@ void ShrubberyCreationForm::beExecuted(Bureaucrat const &bureaucrat) const
 	}
 	else
 		this->print("unable to plant shrubbery", 3);
+}
+
+std::ostream &operator<<(std::ostream &stream, ShrubberyCreationForm const &form)
+{
+	if (form.getIsSigned())
+	{
+        stream << "\e[33m[Form " << form.getName() << "]\e[0m signed \e[32m:)\e[0m (signing grade=" << form.getSigningGrade();
+		return (stream << ") (execute grade=" << form.getExecuteGrade() << ")" << std::flush);
+	}
+	stream << "\e[33m[Form " << form.getName() << "]\e[0m not signed \e[31m:(\e[0m (signing grade=" << form.getSigningGrade();
+	return (stream << ") (execute grade=" << form.getExecuteGrade() << ")" << std::flush);
 }

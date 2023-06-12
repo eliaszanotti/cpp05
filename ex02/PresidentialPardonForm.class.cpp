@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.class.cpp                    :+:      :+:    :+:   */
+/*   PresidentialPardonForm.class.cpp                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/26 13:34:13 by elias             #+#    #+#             */
-/*   Updated: 2023/06/12 12:33:31 by elias            ###   ########.fr       */
+/*   Created: 2023/06/12 14:17:55 by elias             #+#    #+#             */
+/*   Updated: 2023/06/12 14:24:00 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <sstream>
-#include <cstdlib>
-#include "RobotomyRequestForm.class.hpp"
+#include "PresidentialPardonForm.class.hpp"
 
 // Print
-void RobotomyRequestForm::print(std::string const &str, int color) const
+void PresidentialPardonForm::print(std::string const &str, int color) const
 {
 	std::string colorsString = "";
 	std::string reset = "\e[0m";
@@ -28,40 +27,40 @@ void RobotomyRequestForm::print(std::string const &str, int color) const
 		colorsString = oss.str();
 	}
 	if (str.empty())
-		std::cout << colorsString << "[RobotomyRequestForm " << this->_target << "] " << reset;
+		std::cout << colorsString << "[PresidentialPardonForm " << this->_target << "] " << reset;
 	else
-		std::cout << colorsString << "[RobotomyRequestForm " << this->_target << "] " << reset << str << std::endl;
+		std::cout << colorsString << "[PresidentialPardonForm " << this->_target << "] " << reset << str << std::endl;
 }
 
 // Constructors
-RobotomyRequestForm::RobotomyRequestForm(): 
-	Form("RobotomyRequestForm", 72, 45)
+PresidentialPardonForm::PresidentialPardonForm(): 
+	Form("PresidentialPardonForm", 25, 5)
 {
 	this->_target = "<default target>";
 	this->print("created", 2);
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string const &target): 
-	Form("RobotomyRequestForm", 72, 45)
+PresidentialPardonForm::PresidentialPardonForm(std::string const &target): 
+	Form("PresidentialPardonForm", 25, 5)
 {
 	this->_target = target;
 	this->print("created", 2);
 }
 
-RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &copy):
+PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &copy):
 	Form(copy)
 {
 	this->_target = copy._target;
 	this->print("created by copy", 2);
 }
 
-RobotomyRequestForm::~RobotomyRequestForm()
+PresidentialPardonForm::~PresidentialPardonForm()
 {
 	this->print("deleted", 1);
 }
 
 // Operators
-RobotomyRequestForm const	&RobotomyRequestForm::operator=(RobotomyRequestForm const &copy)
+PresidentialPardonForm const	&PresidentialPardonForm::operator=(PresidentialPardonForm const &copy)
 {
 	Form::operator=(copy);
 	this->_target = copy._target;
@@ -70,13 +69,8 @@ RobotomyRequestForm const	&RobotomyRequestForm::operator=(RobotomyRequestForm co
 }
 
 // Methods
-void RobotomyRequestForm::beExecuted(Bureaucrat const &bureaucrat) const
+void PresidentialPardonForm::beExecuted(Bureaucrat const &bureaucrat) const
 {
-	srand((unsigned) time(NULL));
-	
 	this->print("", 3);
-	if (rand() % 2)
-		std::cout << bureaucrat.getName() << " has successfully robotomized!" << std::endl;
-	else
-		std::cout << bureaucrat.getName() << " failed to robotomize..." << std::endl;
+	std::cout << " has been pardoned by Zafod Beeblebrox thanks to " << bureaucrat.getName() << std::endl;
 }

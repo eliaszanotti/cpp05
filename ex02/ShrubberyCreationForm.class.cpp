@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:34:13 by elias             #+#    #+#             */
-/*   Updated: 2023/06/12 14:09:47 by elias            ###   ########.fr       */
+/*   Updated: 2023/06/12 14:27:38 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void ShrubberyCreationForm::beExecuted(Bureaucrat const &bureaucrat) const
 		file << "    ###\n   #o###\n #####o###\n#o#\\#|#/###\n ###\\|/#o#\n  # }|{  #\n    }|{";
 		file.close();
 		this->print("", 3);
-		std::cout << bureaucrat.getName() << "plant a shrubbery!" << std::endl;
+		std::cout << bureaucrat.getName() << " plant a shrubbery!" << std::endl;
 	}
 	else
 		this->print("unable to plant shrubbery", 3);

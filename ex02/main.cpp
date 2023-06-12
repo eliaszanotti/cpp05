@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 13:01:52 by elias             #+#    #+#             */
-/*   Updated: 2023/06/12 14:07:40 by elias            ###   ########.fr       */
+/*   Updated: 2023/06/12 14:27:11 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "Form.class.hpp"
 #include "ShrubberyCreationForm.class.hpp"
 #include "RobotomyRequestForm.class.hpp"
+#include "PresidentialPardonForm.class.hpp"
 
 int main(void)
 {
@@ -60,14 +61,17 @@ int main(void)
         {
     	    ShrubberyCreationForm tree("amazonia");
             RobotomyRequestForm robot("terminator");
+            PresidentialPardonForm president("sarko");
             Bureaucrat mike("Mike", 30);
         
 			std::cout << mike << std::endl;
 			std::cout << tree << std::endl;
             mike.signForm(tree);
             mike.signForm(robot);
+            mike.signForm(president);
 			mike.executeForm(tree);
             mike.executeForm(robot);
+            mike.executeForm(president);
         }
         catch (std::exception &error)
         {

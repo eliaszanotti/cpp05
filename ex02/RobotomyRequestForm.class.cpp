@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.class.cpp                    :+:      :+:    :+:   */
+/*   RobotomyRequestForm.class.cpp                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:34:13 by elias             #+#    #+#             */
-/*   Updated: 2023/06/12 14:09:47 by elias            ###   ########.fr       */
+/*   Updated: 2023/06/12 12:33:31 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <sstream>
 #include <fstream>
-#include "ShrubberyCreationForm.class.hpp"
+#include <cstdlib>
+#include "RobotomyRequestForm.class.hpp"
 
 // Print
-void ShrubberyCreationForm::print(std::string const &str, int color) const
+void RobotomyRequestForm::print(std::string const &str, int color) const
 {
 	std::string colorsString = "";
 	std::string reset = "\e[0m";
@@ -28,40 +29,40 @@ void ShrubberyCreationForm::print(std::string const &str, int color) const
 		colorsString = oss.str();
 	}
 	if (str.empty())
-		std::cout << colorsString << "[ShrubberyCreationForm " << this->_target << "] " << reset;
+		std::cout << colorsString << "[RobotomyRequestForm " << this->_target << "] " << reset;
 	else
-		std::cout << colorsString << "[ShrubberyCreationForm " << this->_target << "] " << reset << str << std::endl;
+		std::cout << colorsString << "[RobotomyRequestForm " << this->_target << "] " << reset << str << std::endl;
 }
 
 // Constructors
-ShrubberyCreationForm::ShrubberyCreationForm(): 
-	Form("ShrubberyCreationForm", 145, 137)
+RobotomyRequestForm::RobotomyRequestForm(): 
+	Form("RobotomyRequestForm", 72, 45)
 {
 	this->_target = "<default target>";
 	this->print("created", 2);
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string const &target): 
-	Form("ShrubberyCreationForm", 145, 137)
+RobotomyRequestForm::RobotomyRequestForm(std::string const &target): 
+	Form("RobotomyRequestForm", 72, 45)
 {
 	this->_target = target;
 	this->print("created", 2);
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &copy):
+RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &copy):
 	Form(copy)
 {
 	this->_target = copy._target;
 	this->print("created by copy", 2);
 }
 
-ShrubberyCreationForm::~ShrubberyCreationForm()
+RobotomyRequestForm::~RobotomyRequestForm()
 {
 	this->print("deleted", 1);
 }
 
 // Operators
-ShrubberyCreationForm const	&ShrubberyCreationForm::operator=(ShrubberyCreationForm const &copy)
+RobotomyRequestForm const	&RobotomyRequestForm::operator=(RobotomyRequestForm const &copy)
 {
 	Form::operator=(copy);
 	this->_target = copy._target;
@@ -70,19 +71,13 @@ ShrubberyCreationForm const	&ShrubberyCreationForm::operator=(ShrubberyCreationF
 }
 
 // Methods
-void ShrubberyCreationForm::beExecuted(Bureaucrat const &bureaucrat) const
+void RobotomyRequestForm::beExecuted(Bureaucrat const &bureaucrat) const
 {
-	std::ofstream	file;	
-
-	file.open((this->_target + "_shrubbery").c_str());
-
-	if (file.is_open())
-	{
-		file << "    ###\n   #o###\n #####o###\n#o#\\#|#/###\n ###\\|/#o#\n  # }|{  #\n    }|{";
-		file.close();
-		this->print("", 3);
-		std::cout << bureaucrat.getName() << "plant a shrubbery!" << std::endl;
-	}
+	srand((unsigned) time(NULL));
+	
+	this->print("", 3);
+	if (rand() % 2)
+		std::cout << bureaucrat.getName() << " has successfully robotomized " << this->_target << "!" << std::endl;
 	else
-		this->print("unable to plant shrubbery", 3);
+		std::cout << bureaucrat.getName() << " failed to robotomize " << this->_target << std::endl;
 }

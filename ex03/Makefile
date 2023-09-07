@@ -6,7 +6,7 @@
 #    By: elias <elias@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/16 17:08:00 by elias             #+#    #+#              #
-#    Updated: 2023/06/12 14:24:29 by elias            ###   ########.fr        #
+#    Updated: 2023/09/07 17:59:53 by elias            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ S_SRC		= main.cpp							\
 			ShrubberyCreationForm.class.cpp		\
 			RobotomyRequestForm.class.cpp		\
 			PresidentialPardonForm.class.cpp	\
+			Intern.class.cpp					\
 
 S_TMP		= ${addprefix ${D_SRC}, ${S_SRC}}
 O_SRC		= $(patsubst %.cpp, ${D_OBJS}%.o, $(S_TMP))
@@ -56,7 +57,7 @@ ${D_OBJS}%.o:%.cpp		Makefile
 ${NAME}:	${O_SRC}
 			@${PRINT}	"${C_G}${C_DEL}Creating ${NAME}'s objects : DONE\n"
 			@${PRINT}	"${C_Y}Compiling ${NAME}...${C_RST}"
-			@${CC}		${O_SRC} -o ${NAME}
+			@${CC}		-fsanitize=address ${O_SRC} -o ${NAME}
 			@${PRINT}	"${C_G}${C_DEL}Compiling ${NAME} : DONE ${C_RST}\n\n"
 
 ascii:

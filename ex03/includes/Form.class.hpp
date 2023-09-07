@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:34:13 by elias             #+#    #+#             */
-/*   Updated: 2023/06/12 12:03:59 by elias            ###   ########.fr       */
+/*   Updated: 2023/09/07 17:27:59 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ class Form
 		Form();
 		Form(std::string const &name, int const signingGrade, int const executeGrade);
 		Form(Form const &copy);
-		~Form();
+		virtual ~Form();
 
 		// Operators
 		Form const	&operator=(Form const &copy);

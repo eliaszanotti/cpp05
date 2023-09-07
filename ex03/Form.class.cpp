@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 12:08:34 by elias             #+#    #+#             */
-/*   Updated: 2023/06/12 14:33:54 by elias            ###   ########.fr       */
+/*   Updated: 2023/09/07 18:05:50 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,9 @@ Form::Form(std::string const &name, int const signingGrade, int const executeGra
 	_signingGrade(signingGrade),
 	_executeGrade(executeGrade)
 {
-	if (signingGrade > 150)
+	if (signingGrade > 150 || executeGrade > 150)
 		throw (Form::GradeTooLowException());
-	if (signingGrade < 1)
-		throw (Form::GradeTooHighException());
-	if (executeGrade > 150)
-		throw (Form::GradeTooLowException());
-	if (executeGrade < 1)
+	if (signingGrade < 1 || executeGrade < 1)
 		throw (Form::GradeTooHighException());
 	this->print("created", 2);
 }

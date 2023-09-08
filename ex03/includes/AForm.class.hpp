@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.class.hpp                                     :+:      :+:    :+:   */
+/*   AForm.class.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:34:13 by elias             #+#    #+#             */
-/*   Updated: 2023/09/07 17:27:59 by elias            ###   ########.fr       */
+/*   Updated: 2023/09/08 13:31:07 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORM_CLASS_H
-# define FORM_CLASS_H
+#ifndef AFORM_CLASS_H
+# define AFORM_CLASS_H
 
 # include <iostream>
 # include "Bureaucrat.class.hpp"
 
 class Bureaucrat;
 
-class Form
+class AForm
 {
 	private:
 		std::string	const	_name;
@@ -30,13 +30,13 @@ class Form
 
 	public:
 		// Constructors
-		Form();
-		Form(std::string const &name, int const signingGrade, int const executeGrade);
-		Form(Form const &copy);
-		virtual ~Form();
+		AForm();
+		AForm(std::string const &name, int const signingGrade, int const executeGrade);
+		AForm(AForm const &copy);
+		virtual ~AForm();
 
 		// Operators
-		Form const	&operator=(Form const &copy);
+		AForm const	&operator=(AForm const &copy);
 
 		// Methods
 		void	beSigned(Bureaucrat const &bureaucrat);
@@ -60,13 +60,13 @@ class Form
 			public:
 				virtual char const	*what(void) const throw();
 		};
-		class FormNotSigned: public std::exception
+		class AFormNotSigned: public std::exception
 		{
 			public:
 				virtual char const	*what(void) const throw();
 		};
 };
 
-std::ostream	&operator<<(std::ostream &stream, Form const &form);
+std::ostream	&operator<<(std::ostream &stream, AForm const &Aform);
 
 #endif

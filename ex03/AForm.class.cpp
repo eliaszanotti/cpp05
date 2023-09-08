@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.class.cpp                                     :+:      :+:    :+:   */
+/*   AForm.class.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 12:08:34 by elias             #+#    #+#             */
-/*   Updated: 2023/09/07 18:05:50 by elias            ###   ########.fr       */
+/*   Updated: 2023/09/07 18:06:12 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <sstream>
-#include "Form.class.hpp"
+#include "AForm.class.hpp"
 
 // Print
-void Form::print(std::string const &str, int color) const
+void AForm::print(std::string const &str, int color) const
 {
 	std::string colorsString = "";
 	std::string reset = "\e[0m";
@@ -26,13 +26,13 @@ void Form::print(std::string const &str, int color) const
 		colorsString = oss.str();
 	}
 	if (str.empty())
-		std::cout << colorsString << "[Form " << this->_name << "] " << reset;
+		std::cout << colorsString << "[AForm " << this->_name << "] " << reset;
 	else
-		std::cout << colorsString << "[Form " << this->_name << "] " << reset << str << std::endl;
+		std::cout << colorsString << "[AForm " << this->_name << "] " << reset << str << std::endl;
 }
 
 // Constructors
-Form::Form():
+AForm::AForm():
 	_name("<default name>"),
 	_isSigned(false),
 	_signingGrade(50),
@@ -41,20 +41,20 @@ Form::Form():
 	this->print("created", 2);
 }
 
-Form::Form(std::string const &name, int const signingGrade, int const executeGrade):
+AForm::AForm(std::string const &name, int const signingGrade, int const executeGrade):
 	_name(name),
 	_isSigned(false),
 	_signingGrade(signingGrade),
 	_executeGrade(executeGrade)
 {
 	if (signingGrade > 150 || executeGrade > 150)
-		throw (Form::GradeTooLowException());
+		throw (AForm::GradeTooLowException());
 	if (signingGrade < 1 || executeGrade < 1)
-		throw (Form::GradeTooHighException());
+		throw (AForm::GradeTooHighException());
 	this->print("created", 2);
 }
 
-Form::Form(Form const &copy):
+AForm::AForm(AForm const &copy):
 	_name(copy.getName()),
 	_isSigned(copy.getIsSigned()),
 	_signingGrade(copy.getSigningGrade()),
@@ -63,13 +63,13 @@ Form::Form(Form const &copy):
 	this->print("created", 2);
 }
 
-Form::~Form()
+AForm::~AForm()
 {
 	this->print("deleted", 1);
 }
 
 // Operators
-Form const	&Form::operator=(Form const &copy)
+AForm const	&AForm::operator=(AForm const &copy)
 {
 	this->_isSigned = copy.getIsSigned();
 	this->print("created by assignment", 2);
@@ -77,71 +77,71 @@ Form const	&Form::operator=(Form const &copy)
 }
 
 // Methods
-void Form::beSigned(Bureaucrat const &bureaucrat)
+void AForm::beSigned(Bureaucrat const &bureaucrat)
 {
 	if (bureaucrat.getGrade() > this->_signingGrade)
-		throw (Form::GradeTooLowException());
+		throw (AForm::GradeTooLowException());
 	else
 	{
 		this->_isSigned = true;
-		this->print("form signed !", 3);
+		this->print("Aform signed !", 3);
 	}
 }
 
-void Form::execute(Bureaucrat const &executor) const
+void AForm::execute(Bureaucrat const &executor) const
 {
 	if (!this->_isSigned)
-		throw (Form::FormNotSigned());
+		throw (AForm::AFormNotSigned());
 	else if (executor.getGrade() > this->_executeGrade)
-		throw (Form::GradeTooLowException());
+		throw (AForm::GradeTooLowException());
 	else
 		this->beExecuted(executor);
 }
 
 // Getters and Setters
-std::string const	&Form::getName(void) const
+std::string const	&AForm::getName(void) const
 {
     return (this->_name);
 }
 
-bool	Form::getIsSigned(void) const
+bool	AForm::getIsSigned(void) const
 {
     return (this->_isSigned);
 }
 
-int const	&Form::getSigningGrade(void) const
+int const	&AForm::getSigningGrade(void) const
 {
     return (this->_signingGrade);
 }
 
-int const	&Form::getExecuteGrade(void) const
+int const	&AForm::getExecuteGrade(void) const
 {
     return (this->_executeGrade);
 }
 
 // Exceptions
-char const *Form::GradeTooHighException::what(void) const throw()
+char const *AForm::GradeTooHighException::what(void) const throw()
 {
     return ("\e[31m[ERROR]\e[0m Grade too high!");
 }
 
-char const *Form::GradeTooLowException::what(void) const throw()
+char const *AForm::GradeTooLowException::what(void) const throw()
 {
     return ("\e[31m[ERROR]\e[0m Grade too low!");
 }
 
-char const *Form::FormNotSigned::what(void) const throw()
+char const *AForm::AFormNotSigned::what(void) const throw()
 {
-    return ("\e[31m[ERROR]\e[0m Form is not signed!");
+    return ("\e[31m[ERROR]\e[0m AForm is not signed!");
 }
 
-std::ostream &operator<<(std::ostream &stream, Form const &form)
+std::ostream &operator<<(std::ostream &stream, AForm const &Aform)
 {
-	if (form.getIsSigned())
+	if (Aform.getIsSigned())
 	{
-        stream << "\e[33m[Form " << form.getName() << "]\e[0m signed \e[32m:)\e[0m (signing grade=" << form.getSigningGrade();
-		return (stream << ") (execute grade=" << form.getExecuteGrade() << ")" << std::flush);
+        stream << "\e[33m[AForm " << Aform.getName() << "]\e[0m signed \e[32m:)\e[0m (signing grade=" << Aform.getSigningGrade();
+		return (stream << ") (execute grade=" << Aform.getExecuteGrade() << ")" << std::flush);
 	}
-	stream << "\e[33m[Form " << form.getName() << "]\e[0m not signed \e[31m:(\e[0m (signing grade=" << form.getSigningGrade();
-	return (stream << ") (execute grade=" << form.getExecuteGrade() << ")" << std::flush);
+	stream << "\e[33m[AForm " << Aform.getName() << "]\e[0m not signed \e[31m:(\e[0m (signing grade=" << Aform.getSigningGrade();
+	return (stream << ") (execute grade=" << Aform.getExecuteGrade() << ")" << std::flush);
 }

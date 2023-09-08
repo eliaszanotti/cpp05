@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:34:13 by elias             #+#    #+#             */
-/*   Updated: 2023/09/07 18:03:59 by elias            ###   ########.fr       */
+/*   Updated: 2023/09/08 13:42:13 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ Intern const	&Intern::operator=(Intern const &copy)
 }
 
 // Methods
-Form *Intern::makeForm(std::string const &formName, std::string const &formTarget) const
+AForm *Intern::makeForm(std::string const &formName, std::string const &formTarget) const
 {
 	int	formIndex = -1;
 
@@ -70,7 +70,7 @@ Form *Intern::makeForm(std::string const &formName, std::string const &formTarge
 		"robotomy request",
         "shrubbery creation"
     };
-	Form	*forms[] = {
+	AForm	*forms[] = {
 		new	PresidentialPardonForm(formTarget),
 		new RobotomyRequestForm(formTarget),
 		new ShrubberyCreationForm(formTarget)

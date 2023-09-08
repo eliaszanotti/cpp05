@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 14:17:55 by elias             #+#    #+#             */
-/*   Updated: 2023/06/12 14:36:34 by elias            ###   ########.fr       */
+/*   Updated: 2023/09/08 13:37:04 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,21 +34,21 @@ void PresidentialPardonForm::print(std::string const &str, int color) const
 
 // Constructors
 PresidentialPardonForm::PresidentialPardonForm(): 
-	Form("PresidentialPardonForm", 25, 5)
+	AForm("PresidentialPardonForm", 25, 5)
 {
 	this->_target = "<default target>";
 	this->print("created", 2);
 }
 
 PresidentialPardonForm::PresidentialPardonForm(std::string const &target): 
-	Form("PresidentialPardonForm", 25, 5)
+	AForm("PresidentialPardonForm", 25, 5)
 {
 	this->_target = target;
 	this->print("created", 2);
 }
 
 PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &copy):
-	Form(copy)
+	AForm(copy)
 {
 	this->_target = copy._target;
 	this->print("created by copy", 2);
@@ -62,7 +62,7 @@ PresidentialPardonForm::~PresidentialPardonForm()
 // Operators
 PresidentialPardonForm const	&PresidentialPardonForm::operator=(PresidentialPardonForm const &copy)
 {
-	Form::operator=(copy);
+	AForm::operator=(copy);
 	this->_target = copy._target;
 	this->print("created by assignment", 2);
 	return (*this);

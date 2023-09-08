@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:34:13 by elias             #+#    #+#             */
-/*   Updated: 2023/09/07 17:18:01 by elias            ###   ########.fr       */
+/*   Updated: 2023/09/08 13:41:24 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define INTERN_CLASS_H
 
 # include <iostream>
-# include "Form.class.hpp"
+# include "AForm.class.hpp"
 
 class Intern
 {
@@ -32,7 +32,7 @@ class Intern
 		Intern const	&operator=(Intern const &copy);
 
 		// Methods
-		Form	*makeForm(std::string const &formName, std::string const &formTarget) const;
+		AForm	*makeForm(std::string const &formName, std::string const &formTarget) const;
 };
 
 #endif

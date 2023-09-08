@@ -6,13 +6,13 @@
 #    By: elias <elias@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/16 17:08:00 by elias             #+#    #+#              #
-#    Updated: 2023/09/07 18:04:36 by elias            ###   ########.fr        #
+#    Updated: 2023/09/08 13:39:46 by elias            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 S_SRC		= main.cpp							\
 			Bureaucrat.class.cpp				\
-			Form.class.cpp						\
+			AForm.class.cpp						\
 			ShrubberyCreationForm.class.cpp		\
 			RobotomyRequestForm.class.cpp		\
 			PresidentialPardonForm.class.cpp	\

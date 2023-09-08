@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:34:13 by elias             #+#    #+#             */
-/*   Updated: 2023/09/08 13:15:44 by elias            ###   ########.fr       */
+/*   Updated: 2023/09/08 13:34:38 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void Bureaucrat::decrementGrade(int value)
 	std::cout << "[-" << value << "] new grade : " << this->_grade << std::endl;
 }
 		
-void Bureaucrat::signForm(Form &form)
+void Bureaucrat::signForm(AForm &form)
 {
 	try
 	{
@@ -119,7 +119,7 @@ void Bureaucrat::signForm(Form &form)
 	}
 }
 
-void Bureaucrat::executeForm(Form const &form)
+void Bureaucrat::executeForm(AForm const &form)
 {
 	try
 	{

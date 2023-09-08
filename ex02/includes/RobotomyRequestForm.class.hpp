@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:34:13 by elias             #+#    #+#             */
-/*   Updated: 2023/06/12 14:36:06 by elias            ###   ########.fr       */
+/*   Updated: 2023/09/08 13:32:25 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 # include <iostream>
 # include "Bureaucrat.class.hpp"
-# include "Form.class.hpp"
+# include "AForm.class.hpp"
 
-class RobotomyRequestForm: public Form
+class RobotomyRequestForm: public AForm
 {
 	private:
 		std::string	_target;

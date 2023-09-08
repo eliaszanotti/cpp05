@@ -35,21 +35,21 @@ void RobotomyRequestForm::print(std::string const &str, int color) const
 
 // Constructors
 RobotomyRequestForm::RobotomyRequestForm(): 
-	Form("RobotomyRequestForm", 72, 45)
+	AForm("RobotomyRequestForm", 72, 45)
 {
 	this->_target = "<default target>";
 	this->print("created", 2);
 }
 
 RobotomyRequestForm::RobotomyRequestForm(std::string const &target): 
-	Form("RobotomyRequestForm", 72, 45)
+	AForm("RobotomyRequestForm", 72, 45)
 {
 	this->_target = target;
 	this->print("created", 2);
 }
 
 RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &copy):
-	Form(copy)
+	AForm(copy)
 {
 	this->_target = copy._target;
 	this->print("created by copy", 2);
@@ -63,7 +63,7 @@ RobotomyRequestForm::~RobotomyRequestForm()
 // Operators
 RobotomyRequestForm const	&RobotomyRequestForm::operator=(RobotomyRequestForm const &copy)
 {
-	Form::operator=(copy);
+	AForm::operator=(copy);
 	this->_target = copy._target;
 	this->print("created by assignment", 2);
 	return (*this);

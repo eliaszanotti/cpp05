@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:34:13 by elias             #+#    #+#             */
-/*   Updated: 2023/06/12 14:37:19 by elias            ###   ########.fr       */
+/*   Updated: 2023/09/08 13:36:00 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,21 +35,21 @@ void ShrubberyCreationForm::print(std::string const &str, int color) const
 
 // Constructors
 ShrubberyCreationForm::ShrubberyCreationForm(): 
-	Form("ShrubberyCreationForm", 145, 137)
+	AForm("ShrubberyCreationForm", 145, 137)
 {
 	this->_target = "<default target>";
 	this->print("created", 2);
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string const &target): 
-	Form("ShrubberyCreationForm", 145, 137)
+	AForm("ShrubberyCreationForm", 145, 137)
 {
 	this->_target = target;
 	this->print("created", 2);
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &copy):
-	Form(copy)
+	AForm(copy)
 {
 	this->_target = copy._target;
 	this->print("created by copy", 2);
@@ -63,7 +63,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 // Operators
 ShrubberyCreationForm const	&ShrubberyCreationForm::operator=(ShrubberyCreationForm const &copy)
 {
-	Form::operator=(copy);
+	AForm::operator=(copy);
 	this->_target = copy._target;
 	this->print("created by assignment", 2);
 	return (*this);

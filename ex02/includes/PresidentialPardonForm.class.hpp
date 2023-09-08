@@ -15,9 +15,9 @@
 
 # include <iostream>
 # include "Bureaucrat.class.hpp"
-# include "Form.class.hpp"
+# include "AForm.class.hpp"
 
-class PresidentialPardonForm: public Form
+class PresidentialPardonForm: public AForm
 {
 	private:
 		std::string	_target;

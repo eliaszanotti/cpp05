@@ -6,13 +6,13 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 13:01:52 by elias             #+#    #+#             */
-/*   Updated: 2023/06/12 14:27:11 by elias            ###   ########.fr       */
+/*   Updated: 2023/09/08 13:32:45 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Bureaucrat.class.hpp"
-#include "Form.class.hpp"
+#include "AForm.class.hpp"
 #include "ShrubberyCreationForm.class.hpp"
 #include "RobotomyRequestForm.class.hpp"
 #include "PresidentialPardonForm.class.hpp"

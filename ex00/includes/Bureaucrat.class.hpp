@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:34:13 by elias             #+#    #+#             */
-/*   Updated: 2023/06/02 14:44:03 by elias            ###   ########.fr       */
+/*   Updated: 2023/09/08 13:11:04 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,14 @@
 class Bureaucrat
 {
 	private:
-		std::string	const	&_name;
+		std::string	const	_name;
 		int	_grade;
 		// Print
 		void	print(std::string const &str, int color) const;
 
 	public:
 		// Constructors
+		Bureaucrat();
 		Bureaucrat(std::string const &name, int grade);
 		Bureaucrat(Bureaucrat const &copy);
 		~Bureaucrat();

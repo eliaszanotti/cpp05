@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:34:13 by elias             #+#    #+#             */
-/*   Updated: 2023/06/05 17:02:22 by elias            ###   ########.fr       */
+/*   Updated: 2023/09/08 13:29:23 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,14 @@ class Form;
 class Bureaucrat
 {
 	private:
-		std::string	const	&_name;
+		std::string	const	_name;
 		int	_grade;
 		// Print
 		void	print(std::string const &str, int color) const;
 
 	public:
 		// Constructors
+		Bureaucrat();
 		Bureaucrat(std::string const &name, int grade);
 		Bureaucrat(Bureaucrat const &copy);
 		~Bureaucrat();

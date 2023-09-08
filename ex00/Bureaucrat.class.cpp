@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:34:13 by elias             #+#    #+#             */
-/*   Updated: 2023/06/05 16:26:49 by elias            ###   ########.fr       */
+/*   Updated: 2023/09/08 13:27:47 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,11 @@ void Bureaucrat::print(std::string const &str, int color) const
 }
 
 // Constructors
+Bureaucrat::Bureaucrat(): _name("default Bureaucrat"), _grade(75)
+{
+	this->print("created", 2);
+}
+
 Bureaucrat::Bureaucrat(std::string const &name, int grade): _name(name)
 {
 	this->_grade = grade;
